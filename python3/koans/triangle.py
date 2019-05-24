@@ -17,8 +17,22 @@
 #   about_triangle_project_2.py
 #
 def triangle(a, b, c):
-    # DELETE 'PASS' AND WRITE THIS CODE
-    pass
+
+    for side in [a, b, c]:
+        if side <= 0:
+            raise TriangleError("Sides must be over 0 in length")
+
+    if 2 * max(a, b, c) >= a + b + c:
+        raise TriangleError("Triangle inequality not satisfied")
+    
+    sides = set([a, b, c])
+    
+    if len(sides) == 3:
+        return 'scalene'
+    elif len(sides) == 2:
+        return 'isosceles'
+    else:
+        return 'equilateral'
 
 # Error class used in part 2.  No need to change this code.
 class TriangleError(Exception):
